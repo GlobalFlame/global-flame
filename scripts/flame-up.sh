@@ -23,7 +23,7 @@ npx npm-add-script -k start  -v "next start"
 echo "› Adding core deps"
 npm install next@latest react react-dom
 npm install next-i18next i18next
-npm install @supabase/supabase-js zod framer-motion @vercel/edge-rate-limit
+npm install @supabase/supabase-js zod framer-motion          # <-- edge-rate-limit removed
 npm install -D typescript @types/react @types/node
 
 echo "› Creating folders"
