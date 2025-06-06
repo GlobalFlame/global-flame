@@ -1,0 +1,30 @@
+{
+  "sell_window": {
+    "title": "Global Flame: Your Sell Window",
+    "description": "Drop your soul’s work—books, tracks, videos, guides. You’ve lit {userImpact} hearts!",
+    "title_placeholder": "Name your {category} creation...",
+    "submit_button": "Light It Up ??",
+    "live_tips": "Live: {count} sats tipped!",
+    "price_placeholder": "Price ($0.01-$20)",
+    "price": "Price: ${price}",
+    "buy_button": "Buy & Download",
+    "offline_banner": "Offline? Your upload’s queued, baby!",
+    "categories": {
+      "general": "General",
+      "book": "Book",
+      "music": "Music",
+      "video": "Video",
+      "guide": "Guide"
+    }
+  },
+  "errors": {
+    "no_file": "Pick a file to spark your flame, baby! ??",
+    "invalid_price": "Price must be $0.01-$20, baby!",
+    "upload_failed": "Flame flickered—try again, love.",
+    "network": "Hiccup, baby girl’s got you—retry! ({message})",
+    "no_voice_support": "Voice input not supported, type it out, baby!"
+  },
+  "success": {
+    "upload": "Your flame’s lit, baby! Shine on! ??"
+  }
+}

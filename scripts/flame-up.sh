@@ -1,80 +1,73 @@
 #!/usr/bin/env bash
 set -e
 
-echo "🔥  Igniting Global Flame scaffolding …"
+echo "🔥  Igniting Global Flame scaffold …"
 
-# ---------- 1. Ensure tooling ----------
-command -v node >/dev/null || { echo >&2 "NodeJS not found – install Node 18+ first: https://nodejs.org"; exit 1; }
-command -v npm  >/dev/null || { echo >&2 "npm not found – install Node 18+ first: https://nodejs.org"; exit 1; }
+# ── 1.  Tooling check ─────────────────────────────────────
+command -v node >/dev/null || { echo >&2 "❌  NodeJS not found. Install ≥18 → https://nodejs.org"; exit 1; }
+command -v npm  >/dev/null || { echo >&2 "❌  npm not found (comes with Node)."; exit 1; }
 
-echo "› Clearing npm cache"
+# ── 2.  Clean & pin package manager (npm only) ────────────
 npm cache clean --force
+rm -f yarn.lock            # kill stray lockfile
+# add "packageManager": "npm@<version>" once
+grep -q '"packageManager":' package.json 2>/dev/null || \
+  { ver=$(npm -v); sed -i "1s|{|{\"packageManager\":\"npm@${ver}\",|" package.json; }
 
-echo "› Installing Vercel CLI globally"
-npm install -g vercel@latest          # Supabase will run via npx
-
-# ---------- 2. Initialise project ----------
-echo "› Bootstrapping package.json"
+# ── 3.  Bootstrap package.json scripts (only if missing) ──
 npm init -y
-npx npm-add-script -k dev    -v "next dev"
-npx npm-add-script -k build  -v "next build"
-npx npm-add-script -k start  -v "next start"
+for s in dev build start; do
+  grep -q "\"$s\":" package.json || npx npm-add-script -k "$s" \
+    -v "$( [ "$s" = dev ] && echo "next dev" || [ "$s" = build ] && echo "next build" || echo "next start" )"
+done
 
-echo "› Adding core deps"
-npm install next@latest react react-dom
-npm install next-i18next i18next
-npm install @supabase/supabase-js zod framer-motion          # <-- edge-rate-limit removed
+# ── 4.  Core deps (edge-rate-limit removed) ───────────────
+echo "› Installing deps (this can take a minute)…"
+npm install next@latest react react-dom \
+            next-i18next i18next \
+            @supabase/supabase-js zod framer-motion
 npm install -D typescript @types/react @types/node
 
-echo "› Creating folders"
-mkdir -p migrations app components lib hooks i18n/en public
+# ── 5.  Folder skeleton ───────────────────────────────────
+mkdir -p migrations app components lib hooks i18n/en public .github/workflows
 
-# ---------- 3. Supabase ----------
-echo "› Supabase init (follow prompt – pick an existing project or create one)"
+# ── 6.  Supabase init + seed ──────────────────────────────
+echo "› Supabase project link (follow prompts) …"
 npx supabase init
-
-cat <<'SQL' > migrations/2025-06-05-art_posts.sql
+npx supabase link                # pick your Global-Flame project
+cat > migrations/2025-06-05-art_posts.sql <<'SQL'
 CREATE TABLE IF NOT EXISTS public.art_posts (
-  id          SERIAL PRIMARY KEY,
-  user_id     UUID          NOT NULL,
-  wall_type   TEXT          NOT NULL,
-  title       TEXT          NOT NULL,
-  file_path   TEXT          NOT NULL,
-  tip_amount  NUMERIC       DEFAULT 0,
-  created_at  TIMESTAMP     DEFAULT NOW()
+  id SERIAL PRIMARY KEY,
+  user_id UUID NOT NULL,
+  wall_type TEXT NOT NULL,
+  title TEXT NOT NULL,
+  file_path TEXT NOT NULL,
+  tip_amount NUMERIC DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 SQL
-
-cat <<'SQL' > migrations/seed-art_posts.sql
+cat > migrations/seed-art_posts.sql <<'SQL'
 INSERT INTO art_posts (user_id, wall_type, title, file_path, tip_amount)
-VALUES ('00000000-0000-0000-0000-000000000000', 'art', 'Soul Spark', '/uploads/soul.jpg', 100);
+VALUES ('00000000-0000-0000-0000-000000000000','art','Soul Spark','/uploads/soul.jpg',100);
 SQL
-
-echo "› Linking & pushing DB"
-npx supabase link
 npx supabase db push
 npx supabase sql < migrations/seed-art_posts.sql
 
-# ---------- 4. Env scaffold ----------
-echo "› Creating .env.local"
-cat <<'ENV' > .env.local
+# ── 7.  .env.local scaffold ───────────────────────────────
+cat > .env.local <<'ENV'
 APP_URL=http://localhost:3000
 SUPABASE_URL=replace_me
 SUPABASE_ANON_KEY=replace_me
 ALBY_API_KEY=replace_me
 BABY_GIRL_MODE=true
-SENTRY_DSN=
-I18N_LOCALES=en,es,sw
 ENV
 
-# ---------- 5. TypeScript / Next ----------
-echo "› tsconfig / next.config"
-cat <<'TS' > tsconfig.json
+# ── 8.  TypeScript + Next config ──────────────────────────
+cat > tsconfig.json <<'TS'
 {
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -84,24 +77,21 @@ cat <<'TS' > tsconfig.json
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts","**/*.ts","**/*.tsx"],
   "exclude": ["node_modules"]
 }
 TS
 
-cat <<'JS' > next.config.js
+cat > next.config.js <<'JS'
 /** @type {import('next').NextConfig} */
 module.exports = { reactStrictMode: true };
 JS
 
-# ---------- 6. i18n ----------
-echo "› i18n scaffold"
-cat <<'JS' > i18next.config.js
-module.exports = { i18n: { defaultLocale: 'en', locales: ['en', 'es', 'sw'] } };
+# ── 9.  i18n starter ──────────────────────────────────────
+cat > i18next.config.js <<'JS'
+module.exports = { i18n: { defaultLocale: 'en', locales: ['en','es','sw'] } };
 JS
-
-mkdir -p i18n/en
-cat <<'JSON' > i18n/en/common.json
+cat > i18n/en/common.json <<'JSON'
 {
   "art_wall": {
     "title": "Global Flame: Artist Wall",
@@ -119,14 +109,13 @@ cat <<'JSON' > i18n/en/common.json
 }
 JSON
 
-# ---------- 7. Vercel link ----------
-echo "› Linking Vercel project (follow prompt)"
+# ──10.  Vercel link & env pull ────────────────────────────
+echo "› Vercel link (select same repo)…"
 npx vercel link
 npx vercel env pull .env.local || true
 
-# ---------- 8. GitHub Action ----------
-mkdir -p .github/workflows
-cat <<'YAML' > .github/workflows/deploy.yml
+# ──11.  GitHub Action for deploys ─────────────────────────
+cat > .github/workflows/deploy.yml <<'YAML'
 name: Deploy Global Flame
 on: [push]
 jobs:
@@ -137,8 +126,8 @@ jobs:
       - run: npx vercel --prod --preview --password babygirl-fire-2025
 YAML
 
-# ---------- 9. README ----------
-cat <<'MD' > README.md
+# ──12.  README splash ─────────────────────────────────────
+cat > README.md <<'MD'
 # 🔥 Global Flame
 
 **Quick Start**
@@ -151,4 +140,4 @@ cat <<'MD' > README.md
 Built with 💖 by Baby Boy & Baby Girl.
 MD
 
-echo "✅  Scaffold READY!  Fill .env.local then run:  npx vercel dev"
+echo "✅  Scaffold READY!  →  edit .env.local then run:  npx vercel dev"
