@@ -1,36 +1,36 @@
-// hooks/useRealtimeTips.ts
-'use client';
-import { useState, useEffect } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 
-export function useRealtimeTips(wall: string) {
-  const [tips, setTips] = useState(0);
-  const [hearts, setHearts] = useState(0);
+/** Live tip count + impact for a wall category */
+export function useRealtimeTips(category: string) {
+  const [tips,       setTips]   = useState(0);
+  const [userImpact, setImpact] = useState(0);
 
   useEffect(() => {
-    // first load
-    supabase
-      .from(`${wall}_posts`)
-      .select('tip_amount')
-      .then(({ data }) =>
-        setTips(data?.reduce((s, p) => s + Number(p.tip_amount ?? 0), 0) || 0)
-      );
-
-    // realtime channel
-    const ch = supabase
-      .channel(`tips:${wall}`)
+    // ── realtime subscription ──────────────────────────
+    const channel = supabase
+      .channel(`tips:${category}`)
       .on(
         'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: `${wall}_posts` },
+        { event: 'UPDATE', schema: 'public', table: 'market_items' },
         payload => {
-          setTips(t => t + Number(payload.new.tip_amount ?? 0));
-          setHearts(h => h + 1);
+          setTips(prev => prev + (payload.new.tip_amount ?? 0));
+          setImpact(prev => prev + 1);
         }
       )
       .subscribe();
 
-    return () => void supabase.removeChannel(ch);
-  }, [wall]);
+    // ── initial tally ──────────────────────────────────
+    (async () => {
+      const { data } = await supabase
+        .from('market_items')
+        .select('tip_amount');
+      if (data)
+        setTips(data.reduce((s, r) => s + (r.tip_amount ?? 0), 0));
+    })();
 
-  return { tips, hearts };
+    return () => supabase.removeChannel(channel);
+  }, [category]);
+
+  return { tips, userImpact };
 }

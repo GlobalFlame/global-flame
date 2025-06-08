@@ -1,0 +1,42 @@
+{
+  "sell_window": {
+    "title": "Global Flame: Your Sell Window",
+    "description": "Drop your soul’s work—books, tracks, videos, guides. You’ve lit {userImpact} hearts!",
+    "title_placeholder": "Name your {category} creation...",
+    "submit_button": "Light It Up ??",
+    "live_tips": "Live: {count} sats tipped!",
+    "price_placeholder": "Price (.01-)",
+    "price": "Price: ",
+    "buy_button": "Buy & Download",
+    "offline_banner": "Offline? Your upload’s queued, baby!",
+    "categories": {
+      "general": "General",
+      "book": "Book",
+      "music": "Music",
+      "video": "Video",
+      "guide": "Guide"
+    }
+  },
+  "errors": {
+    "no_file": "Pick a file to spark your flame, baby! ??",
+    "upload_failed": "Flame flickered—try again, love.",
+    "network": "Hiccup, baby girl’s got you—retry!",
+    "invalid_price": "Price must be .01-, baby!",
+    "invalid_file_type_book": "Books need to be PDFs, baby!",
+    "invalid_file_type_guide": "Guides need to be PDFs, baby!",
+    "invalid_file_type_music": "Music needs to be MP3 or WAV, baby!",
+    "invalid_file_type_video": "Videos need to be MP4 or WebM, baby!",
+    "invalid_file_type_general": "Try a PDF, image, audio, or video, baby!",
+    "offline_upload_queued": "Offline—your upload’s queued!",
+    "no_voice_support": "Voice input not supported, type it out, baby!",
+    "invalid_category": "Invalid category, baby! Use: general, book, music, video, guide"
+  },
+  "success": {
+    "upload": "Your flame’s lit, baby! Shine on! ??"
+  },
+  "towers": {
+    "men": "Men's Wall of Love",
+    "women": "Women's Wall of Love",
+    "children": "Children's Wall of Love"
+  }
+}

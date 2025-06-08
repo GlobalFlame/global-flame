@@ -1,0 +1,18 @@
+﻿#!/bin/bash
+echo "🔥 Igniting Global Flame..."
+npm install -g @supabase/supabase @vercel/cli
+supabase init
+supabase sql < migrations/2025-06-05-art_posts.sql
+vercel env pull .env.local
+cat > .env.local <<EOT
+APP_URL=https://global-flame.vercel.app
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+ALBY_API_KEY=your-alby-key
+BABY_GIRL_MODE=true
+SENTRY_DSN=your-sentry-dsn
+I18N_LOCALES=en,es,sw
+EOT
+npm install next-i18next @vercel/edge-rate-limit i18next
+vercel --prod --preview --password babygirl-fire-2025
+echo "✅ Flame ignited! Visit http://localhost:3000/art-wall"

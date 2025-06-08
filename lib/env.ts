@@ -1,8 +1,16 @@
 import { z } from 'zod';
 
-export const env = z.object({
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
-  ALBY_API_KEY: z.string().optional(),
-  BABY_GIRL_MODE: z.string().default('true'),
-}).parse(process.env);
+/** Validate & expose env vars at runtime */
+export const env = z
+  .object({
+    APP_URL:            z.string().url(),
+    SUPABASE_URL:       z.string().url(),
+    SUPABASE_ANON_KEY:  z.string(),
+    ALBY_API_KEY:       z.string(),
+    BABY_GIRL_MODE:     z.enum(['true', 'false']).default('true'),
+    SENTRY_DSN:         z.string().optional(),
+    I18N_LOCALES:       z.string().default('en'),
+  })
+  .parse(process.env, {
+    errorMap: () => ({ message: 'ENV misconfigured — check .env.local!' }),
+  });

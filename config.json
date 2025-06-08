@@ -1,0 +1,16 @@
+{
+  "ApiUrl": "http://localhost:3000/api/v1/sell-upload",
+  "SupabaseUrl": "https://<-your-supabase-id>.supabase.co",
+  "SupabaseKey": "<-your-supabase-anon-key-string->",
+  "DefaultCategory": "general",
+  "MaxPrice": 20,
+  "LogFile": "marketplace_upload.log",
+  "SupportedCategories": ["general","book","music","video","guide"],
+  "FileTypes": {
+    "book": [".pdf"],
+    "guide": [".pdf"],
+    "music": [".mp3",".wav"],
+    "video": [".mp4",".webm"],
+    "general": [".pdf",".jpg",".jpeg",".png",".mp3",".wav",".mp4",".webm"]
+  }
+}

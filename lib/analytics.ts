@@ -1,4 +1,6 @@
+import { env } from '@/lib/env';
 export function trackEvent(event: string, data: object) {
-  /* stub – wire to your analytics later */
-  console.info('[trackEvent]', event, data);
+  if (env.SENTRY_DSN) {
+    fetch('https://sentry.io/api', { method: 'POST', body: JSON.stringify({ event, data }) });
+  }
 }

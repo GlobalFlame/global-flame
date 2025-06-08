@@ -1,4 +1,9 @@
-// components/FlameLoader.tsx
+import { BABY_GIRL_MODE } from '@/lib/config';
+
 export function FlameLoader() {
-  return <div className="animate-spin h-6 w-6 text-pink-400 select-none">🔥</div>;
+  return (
+    <div className={nimate-[spin_1s_linear_infinite] h-6 w-6 }>
+      ??
+    </div>
+  );
 }
