@@ -16,7 +16,7 @@ export default function LoveBombDemo() {
     'Our flame burns eternally 🔥',
     'Your smile breaks my universe 🌠',
     'One spark, infinite glow ✨',
-    'Heartbeat in sync with yours ��',
+    'Heartbeat in sync with yours 💞',
     'Soul dance in moonlight 🕺',
     'Love soars beyond skies ☁️',
     'Our kiss shatters darkness 🌙',
@@ -75,7 +75,7 @@ export default function LoveBombDemo() {
           cursor: 'pointer',
           borderRadius: '4px'
         }}
-        onClick={() => alert(\Sending Love Bomb:\\nPhrase: "\"\\nTip: $\\)}
+        onClick={() => alert(`Sending Love Bomb:\nPhrase: "${selected}"\nTip: $${tip}`)}
       >
         SEND LOVE BOMB
       </button>
