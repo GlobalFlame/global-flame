@@ -1,12 +1,20 @@
-useEffect(() => {
-  // Move all async code into an inner function!
-  async function runAsyncStuff() {
-    // async logic here (your subscriptions, API calls, etc)
-  }
-  runAsyncStuff();
+﻿import { useEffect, useState } from 'react';
 
-  // If you need cleanup, return a NORMAL (not async) function here
-  return () => {
-    // cleanup (unsubscribe, etc)
-  };
-}, [deps]);
+export default function YourComponent() {
+  useEffect(() => {
+    async function runAsyncStuff() {
+      // async logic here (your subscriptions, API calls, etc)
+    }
+    runAsyncStuff();
+
+    return () => {
+      // cleanup (unsubscribe, etc)
+    };
+  }, []);
+
+  return (
+    <div>
+      <h2>Hello from YourComponent!</h2>
+    </div>
+  );
+}
