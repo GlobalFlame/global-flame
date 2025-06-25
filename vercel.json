@@ -1,8 +1,11 @@
-{
-  "crons": [
-    {
-      "path": "/api/post-daily-wall",
-      "schedule": "0 6 * * *"
-    }
+﻿{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js",       "use": "@vercel/next" },
+    { "src": "app/api/send-card.ts",  "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/send-card",  "dest": "app/api/send-card.ts" },
+    { "src": "/(.*)",           "dest": "/" }
   ]
 }

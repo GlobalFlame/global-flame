@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <title>Global Flame ❤️</title>
+  <style>
+    body { font-family:sans-serif; text-align:center; padding:2rem; }
+    input, button { font-size:1rem; padding:.5rem; margin:.5rem; width:200px; }
+    #status { margin-top:1rem; font-weight:bold; }
+    .jar { width:120px; height:120px; margin:0 auto 1rem; background:url('tip-jar.png') center/contain no-repeat; }
+  </style>
+</head>
+<body>
+  <h1>Global Flame ❤️</h1>
+  <div class="jar"></div>
+  <p>Tip & send love worldwide</p>
+  <input id="phone" placeholder="+1234567890"/><br/>
+  <input id="tip" placeholder="Tip Amount ($)" type="number" min="1"/><br/>
+  <button onclick="sendFlame()">Send Flame</button>
+  <div id="status"></div>
+
+  <script>
+  async function sendFlame(){
+    const phone = document.getElementById('phone').value.trim();
+    const tip   = parseInt(document.getElementById('tip').value,10);
+    const st    = document.getElementById('status');
+    st.textContent = '';
+    if(!phone) { st.textContent='Enter a phone number'; return; }
+    if(!tip || tip<1){ st.textContent='Enter a tip (min )'; return; }
+    st.textContent='Sending…';
+    try {
+      const r = await fetch('/api/send-sms',{ 
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ phone, tip })
+      });
+      const j = await r.json();
+      if (j.success) st.style.color='green', st.textContent='💌 Flame sent!';
+      else           st.style.color='red',   st.textContent=j.error;
+    } catch(e) {
+      st.style.color='red'; st.textContent=e.message;
+    }
+  }
+  </script>
+</body>
+</html>

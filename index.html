@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><body style='font-family:sans-serif'>
+  <h1>?? Global Flame Send</h1>
+  <textarea id='text' rows='2' placeholder='Your message'></textarea><br/>
+  <input id='phone' placeholder='Phone (+E.164)' /><br/>
+  <button onclick='send()'>Send</button>
+  <p id='msg'></p>
+  <script>
+    async function send() {
+      const res = await fetch('/api/send-card', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          text: document.getElementById('text').value,
+          phone: document.getElementById('phone').value
+        })
+      });
+      const j = await       document.getElementById('msg').textContent = j.success ? '? Sent!' : '? '+j.error;
+    }
+  </script>
+</body></html>
