@@ -4,7 +4,7 @@
 "main":"server/server.js",
 "scripts":{
 "dev":"nextdev",
-"build":"nextbuild",
+"build": "next build",
 "start":"nextstart"
 },
 "dependencies":{
