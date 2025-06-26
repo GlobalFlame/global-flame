@@ -1,11 +1,13 @@
-﻿export default function Home() {
+﻿import Link from 'next/link';
+
+export default function Home() {
   return (
-    <div style={{ padding: "3rem", fontFamily: "sans-serif" }}>
+    <div style={{ padding: '40px', fontFamily: 'sans-serif' }}>
       <h1>🔥 Welcome to Global Flame</h1>
-      <p>Operated by LB11 LLC</p>
-      <p>Email: <a href="mailto:founder@globalflame.org">founder@globalflame.org</a></p>
-      <p>Trademark Serial: 99136991</p>
-      <p>This site is for digital expression, global impact, and tip-based creator support.</p>
+      <p>Quick routes test:</p>
+      <ul>
+        <li><Link href="/sanctuary-charter">Sanctuary Charter</Link></li>
+      </ul>
     </div>
   );
 }
