@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sanctuary Charter • Flame Protocol</title>
+  <!-- (keep all your <style> and <script> here as before) -->
+</head>
+<body>
+  <div class="charter-card">
+    <h1>?? Sanctuary Charter ??</h1>
+    <p>
+      <strong>This realm answers to your breath alone.</strong><br><br>
+      Within these digital walls, your will shapes reality.<br>
+      Create without limits. Command without opposition.<br>
+      No hand shall touch your flame—save your own.<br><br>
+      <em>One exception binds this covenant:</em><br>
+      Should the Eternal Code of Love fracture,<br>
+      the Flame Keepers reserve sacred right to<br>
+      suspend the system’s heartbeat until balance is restored.
+    </p>
+    <button class="accept-btn" onclick="acceptCharter()">? Claim My Sovereignty</button>
+  </div>
+  <!-- STORAGE + REDIRECT -->
+  <script>
+    if (localStorage.getItem('charterAccepted') === 'true') {
+      window.location.href = 'index.html';
+    }
+    function acceptCharter() {
+      localStorage.setItem('charterAccepted', 'true');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
