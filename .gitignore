@@ -1,12 +1,4 @@
-﻿node_modules/
-.next/
-dist/
-.env.local
-tsconfig.tsbuildinfo
-compilerOptions.paths
-fix-conflict.js
-fix-structure.js
-index.js
-temp.ps1
-package.tmp
-scaffold.log
+.vercel
+
+# Local Netlify folder
+.netlify

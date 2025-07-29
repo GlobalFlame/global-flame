@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Global Flame SMS Opt-In</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <style>
+    body { background: #1a1a1a; color: #fff; font-family: Arial, sans-serif; margin:0; padding:0; display:flex; align-items:center; justify-content:center; height:100vh;}
+    .container { background: #292929; padding: 30px 22px; border-radius: 16px; box-shadow:0 4px 16px rgba(0,0,0,0.4); max-width:350px; width:100%; text-align:center;}
+    h1 { color:#ff6f00; margin-bottom:14px;}
+    p { color:#ffd700;}
+    label { font-weight:bold;}
+    input[type='text'], input[type='checkbox'] { width: 80%; padding: 10px; margin: 10px 0; border-radius: 7px; border: none; }
+    button { padding:10px 20px; border:none; background:#ff6f00; color:#fff; border-radius:7px; font-size:1.1em; cursor:not-allowed; opacity:0.6;}
+    small { color:#ff0; display:block; margin:7px 0 0 0;}
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <h1>Global Flame SMS Opt-In</h1>
+    <form>
+      <label for='phone'>Phone Number</label><br>
+      <input type='text' id='phone' name='phone' placeholder='Your phone number' disabled><br>
+      <label>
+        <input type='checkbox' disabled>
+        I consent to receive SMS updates from Global Flame.
+      </label>
+      <br>
+      <button type='button' disabled>Subscribe</button>
+      <small><b>Demo Only:</b> This page is for Twilio verification. SMS form will activate soon.</small>
+    </form>
+    <p style='margin-top:20px; font-size:0.9em; color:#aaa;'>
+      Questions? <a href='mailto:founder@globalflame.org' style='color:#ffd700'>founder@globalflame.org</a>
+    </p>
+  </div>
+</body>
+</html>

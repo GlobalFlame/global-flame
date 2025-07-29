@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>Upload</title></head><body>
+  <h1>Upload to Tower</h1>
+  <form id="f"><input type="file" id="file"/><button>Send</button></form>
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    const supa = createClient('https://<YOUR‑URL>.supabase.co','<ANON‑KEY>')
+    const params = new URLSearchParams(location.search), tower = params.get('t')
+    document.getElementById('f').onsubmit = async e => {
+      e.preventDefault()
+      const file = document.getElementById('file').files[0]
+      const { data, error } = await supa.storage.from('uploads').upload(\\/\_\\, file)
+      if (error) return alert(error.message)
+      await supa.from('posts').insert({ tower, file_url: data.path, created_at: new Date() })
+      alert('✅ Uploaded!')
+      location.href = 'index.html'
+    }
+  </script>
+</body></html>
