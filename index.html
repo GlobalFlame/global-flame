@@ -1,21 +1,155 @@
 <!DOCTYPE html>
-<html><body style='font-family:sans-serif'>
-  <h1>?? Global Flame Send</h1>
-  <textarea id='text' rows='2' placeholder='Your message'></textarea><br/>
-  <input id='phone' placeholder='Phone (+E.164)' /><br/>
-  <button onclick='send()'>Send</button>
-  <p id='msg'></p>
-  <script>
-    async function send() {
-      const res = await fetch('/api/send-card', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          text: document.getElementById('text').value,
-          phone: document.getElementById('phone').value
-        })
-      });
-      const j = await       document.getElementById('msg').textContent = j.success ? '? Sent!' : '? '+j.error;
+<html lang="en">
+<head>
+  <title>GLOBAL FLAME – SANCTUARY OF LOVE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
     }
-  </script>
-</body></html>
+    h1 {
+      color: #FFD700;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 auto;
+    }
+    .tower, .kids-tower {
+      width: 200px;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 15px rgba(255,215,0,0.6);
+    }
+    .kids-tower {
+      width: 410px;
+      margin-top: 20px;
+    }
+    .tower h2, .kids-tower h2 {
+      font-size: 17px;
+      color: #FFD700;
+    }
+    details {
+      cursor: pointer;
+    }
+    summary {
+      font-weight: bold;
+      color: #FFD700;
+    }
+    .examples {
+      font-size: 13px;
+      color: #f0f0f0;
+    }
+    .btn {
+      display: block;
+      width: 90%;
+      margin: 8px auto;
+      padding: 6px;
+      color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+    }
+    .tip-btn {
+      background-color: #FFD700;
+    }
+    .upload-btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 GLOBAL FLAME – SANCTUARY OF LOVE</h1>
+  <p>Truth-Serum Platform – Pure Love, Pure Truth, Pure Healing</p>
+  <div class="grid">      <div class="tower">
+        <h2>Community Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Elders: Wisdom & Guidance - Grandmother Nia shares oral history ( tip)<br>Women: Support & Empowerment - Mama Kemi teaches basket weaving (Free + tip jar)<br>Men: Brotherhood & Growth - Brother Malik's job training ( access)<br>Children: Future & Fun - Little Kwame's math rap (Tips fund books)<br>Family: Cook-offs (Tips for pots)<br>Bloodline: Rituals (Tips for ceremonies)<br>Villagers: Discussions (Tips for projects)<br>Youth: Leadership (Tips for materials)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Prison Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Life Inmates: Stories & Support - Carlos' inspirational stories ( ebook)<br>Families: Connection & Hope - Maria's messages of hope (Tips fund support)<br>Reentry: Jobs & Transition - Ex-inmate's welding skills ( course)<br>Innocent: Justice & Advocacy - Advocacy campaigns (Tip funds justice)<br>Support: Motivational letters (Tips for books)<br>Hope: Family reunions (Tips for travel)<br>Transition: Skills workshops (Tips for tools)<br>Justice: Legal aid stories (Tips for lawyers)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Education Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Teachers: Classes & Workshops - Mr. Diallo's physics lessons ()<br>Mentors: Guidance & Support - Engineer Adjoa's career coaching (/30min)<br>Materials: Resources & Tools - Printable textbooks ( donation)<br>All Ed: Comprehensive Learning - Street kids' recycling hacks (Tips fund bins)<br>Classes: Math tutorials (Tips for supplies)<br>Guidance: Career talks (Tips for books)<br>Resources: Digital libraries (Tips for access)<br>Learning: Community seminars (Tips for speakers)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Creative Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Art: Visual & Digital Arts - Graffiti crew's inspiring murals ( prints)<br>Comedy: Standup & Sketches - Auntie Zainab's funny stories (Tip jar)<br>Music: Singers & Instrumentalists - Fela-inspired band's songs ( sample,  album)<br>Dance: Movement & Expression - Breakdance tutorials (Tips buy mats)<br>Visual: Painting classes (Tips for supplies)<br>Music: Vocal training (Tips for microphones)<br>Dance: Yoga flows (Tips for mats)<br>Body: Fitness sessions (Tips for equipment)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Innovation Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Invention: Ideas & Prototypes - 12yo's plastic-to-fuel converter ( blueprint)<br>Writers: Books & Scripts - Poetry collections ( ebook)<br>Pods: Live Podcasts - Healing stories podcast ( episode)<br>Kids: Safe & Fun Space - Solar toy hack tutorials (Tips buy parts)<br>Ideas: Brainstorm sessions (Tips for materials)<br>Solutions: Problem-solving workshops (Tips for tools)<br>Collab: Group projects (Tips for supplies)<br>Write: Story writing classes (Tips for books)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Sports Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Ballers: Highlights (Tips buy balls)<br>Coaches: Training ( course)<br>Refs: Clips (Protection tips)<br>Teamwork: Group games (Tips for gear)<br>Drills: Fitness training (Tips for equipment)<br>Highlights: Basketball dunks (Tips for courts)<br>Coaches: Skill sessions (Tips for books)<br>Refs: Fair play workshops (Tips for whistles)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Barter Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Trade goods/skills: Barter tip flow - Phone repairs for rice ( value)<br>Build: Roof thatching for coop ( value)<br>Services: Haircut for textbooks ( value)<br>Food: Garden veggies for clothes ( value)<br>Tools: Knife sharpening for tools ( value)<br>Skills: Language lessons for food ( value)<br>Goods: Handmade crafts for tools ( value)<br>Exchange: Bike repairs for books ( value)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="tower">
+        <h2>Podcast Tower</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Hosts: Live Podcasts - Inspirational stories ( episode)<br>Guests: Healing discussions (Tips fund guests)<br>Panels: Motivational series ( access)<br>Series: Community voices (Free + tip jar)<br>Hosts: Live interviews (Tips for equipment)<br>Guests: Story sharing (Tips for travel)<br>Panels: Group talks (Tips for mics)<br>Series: Ongoing episodes (Tips for editing)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>      <div class="kids-tower">
+        <h2>Children Tower (4–17)</h2>
+        <details>
+          <summary>Press for Examples</summary>
+          <div class="examples">Play: Games & Fun - Math rap battles (Tips fund books)<br>Learn: Lessons & Workshops - Art workshops ( session)<br>Voice: Discussions & Stories - Storytelling (Free + tip jar)<br>Grow: Mentoring & Growth - Sports drills ( access)<br>Play: Creative games (Tips for toys)<br>Learn: Science experiments (Tips for supplies)<br>Voice: Kid podcasts (Tips for mics)<br>Grow: Leadership sessions (Tips for books)</div>
+        </details>
+        <div class="btn tip-btn"></div>
+        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
+      </div>  </div>
+  <p>Pure Love Only, min , 10-min payout, max . Family/Recruits/Creators all eat.</p>
+  <p>Global Flame is operated by LB11 LLC. Founded by Lemuel Blue. Based in Florida, USA.</p>
+  <p>Email: founder@globalflame.org</p>
+  <p>Our platform allows users to send SMS-based Love Bomb tips to creators and elders.</p>
+</body>
+</html>
