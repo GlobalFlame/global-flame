@@ -1,9 +1,9 @@
 {
   "rewrites": [
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/optin", "destination": "/optin.html" },
-    { "source": "/sanctuary-charter", "destination": "/sanctuary-charter.html" },
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/privacy-policy", "destination": "/public/privacy-policy.html" },
+    { "source": "/optin", "destination": "/public/optin.html" },
+    { "source": "/sanctuary-charter", "destination": "/public/sanctuary-charter.html" },
+    { "source": "/", "destination": "/public/index.html" }
   ],
   "cleanUrls": true
 }
