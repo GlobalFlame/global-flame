@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/optin", "destination": "/optin.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/sanctuary-charter", "destination": "/sanctuary-charter.html" }
+    { "source": "/optin", "destination": "/optin.html" },
+    { "source": "/sanctuary-charter", "destination": "/sanctuary-charter.html" },
+    { "source": "/", "destination": "/index.html" }
   ]
 }
