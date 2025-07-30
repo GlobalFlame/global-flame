@@ -4,5 +4,6 @@
     { "source": "/optin", "destination": "/optin.html" },
     { "source": "/sanctuary-charter", "destination": "/sanctuary-charter.html" },
     { "source": "/", "destination": "/index.html" }
-  ]
+  ],
+  "cleanUrls": true
 }
