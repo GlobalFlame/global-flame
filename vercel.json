@@ -1,9 +1,17 @@
 {
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/optin", "destination": "/optin.html" },
-    { "source": "/sanctuary-charter", "destination": "/sanctuary-charter.html" },
-    { "source": "/", "destination": "/index.html" }
-  ],
-  "cleanUrls": true
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/optin",
+      "destination": "/optin.html"
+    },
+    {
+      "source": "/",
+      "destination": "/sanctuary-charter.html"
+    }
+  ]
 }
