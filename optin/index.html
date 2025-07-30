@@ -1,31 +1,99 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
   <meta charset='UTF-8'>
-  <title>Global Flame – Opt-in</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Global Flame – Opt-In</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #fff; color: #222; margin: 0; padding: 0; text-align: center; }
-    .center { max-width: 520px; margin: 80px auto 0 auto; background: #fafaff; padding: 42px 18px; border-radius: 16px; box-shadow: 0 4px 18px #ddd; }
-    h1 { color: #e25e00; font-size: 2.2em; }
-    .info { margin-top: 18px; font-size: 1.1em; }
-    input, button { font-size: 1.2em; margin-top: 16px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; }
-    button { background: #e25e00; color: #fff; border: none; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 60px auto;
+      background-color: #fafaff;
+      padding: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #e25e00;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 1.05em;
+      color: #555;
+    }
+
+    input[type='email'],
+    button {
+      font-size: 1.1em;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #e25e00;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #d04b00;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.95em;
+      color: #333;
+    }
+
+    a {
+      color: #1977cc;
+      text-decoration: underline;
+    }
   </style>
 </head>
+
 <body>
-  <div class='center'>
+  <div class='container'>
     <h1>Opt-In to Global Flame</h1>
-    <div class='info'>Join our updates and special offers.<br>
-      Enter your email and consent to receive communications.
+    <div class='info'>
+      🔥 Join now to receive updates and exclusive special offers!<br>
+      Enter your email and consent to receive communications from Global Flame.
     </div>
+
     <form>
-      <input type='email' placeholder='Your email address' required><br>
-      <label><input type='checkbox' required> I consent to receive messages from Global Flame.</label><br>
-      <button type='submit'>Sign Up</button>
+      <input type='email' placeholder='Your email address' required>
+      <label>
+        <input type='checkbox' required>
+        I consent to receiving email communications from Global Flame.
+      </label>
+      <button type='submit'>Sign Up Now</button>
     </form>
-    <div class='info' style='margin-top:30px; font-size:1.07em; color:#666;'>
-      For questions, contact <a href='mailto:founder@globalflame.org'>founder@globalflame.org</a>
+
+    <div class='info' style='margin-top: 25px;'>
+      Need help? Contact us at <a href='mailto:founder@globalflame.org'>founder@globalflame.org</a>
     </div>
   </div>
 </body>
+
 </html>
