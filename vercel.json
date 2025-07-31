@@ -1,8 +1,17 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/optin", "destination": "/optin.html" },
-    { "source": "/", "destination": "/index.html" }
+    {
+      "destination": "/privacy-policy.html",
+      "source": "/privacy-policy"
+    },
+    {
+      "destination": "/optin.html",
+      "source": "/optin"
+    },
+    {
+      "destination": "/index.html",
+      "source": "/"
+    }
   ]
 }
