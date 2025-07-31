@@ -1,0 +1,23 @@
+name: Run quick-processor Every 90 Days
+
+on:
+  workflow_dispatch:    # allows manual runs
+  schedule:             # runs every 90 days at 00:00 UTC on day 1
+    - cron: '0 0 1 */3 *'
+
+jobs:
+  invoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/actions/setup@v1
+        with:
+          supabase-url: ${{ secrets.SUPABASE_URL }}
+          supabase-service-role-key: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Invoke quick-processor
+        run: |
+          supabase functions invoke quick-processor --project-ref $projectRef
