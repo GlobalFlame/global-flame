@@ -6,12 +6,39 @@
       "source": "/privacy-policy"
     },
     {
-      "destination": "/optin.html",
+      "destination": "/sanctuary-charter.html",
+      "source": "/sanctuary-charter"
+    },
+    {
+      "destination": "/sms-opt-in.html",
       "source": "/optin"
+    },
+    {
+      "destination": "/optin.html",
+      "source": "/email-optin"
+    },
+    {
+      "destination": "/welcome.html",
+      "source": "/welcome"
+    },
+    {
+      "destination": "/terms.html",
+      "source": "/terms"
     },
     {
       "destination": "/index.html",
       "source": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

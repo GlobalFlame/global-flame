@@ -1,155 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <title>GLOBAL FLAME – SANCTUARY OF LOVE</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #FFD700;
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-    .grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 0 auto;
-    }
-    .tower, .kids-tower {
-      width: 200px;
-      border: 2px solid #FFD700;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 0 15px rgba(255,215,0,0.6);
-    }
-    .kids-tower {
-      width: 410px;
-      margin-top: 20px;
-    }
-    .tower h2, .kids-tower h2 {
-      font-size: 17px;
-      color: #FFD700;
-    }
-    details {
-      cursor: pointer;
-    }
-    summary {
-      font-weight: bold;
-      color: #FFD700;
-    }
-    .examples {
-      font-size: 13px;
-      color: #f0f0f0;
-    }
-    .btn {
-      display: block;
-      width: 90%;
-      margin: 8px auto;
-      padding: 6px;
-      color: #000;
-      border-radius: 5px;
-      cursor: pointer;
-      border: none;
-      font-weight: bold;
-    }
-    .tip-btn {
-      background-color: #FFD700;
-    }
-    .upload-btn {
-      background-color: #007bff;
-      color: #fff;
-    }
-  </style>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Global Flame - Sanctuary of Love</title>
+    <style>
+        body { background-color: black; color: white; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
+        h1 { color: #ffd700; font-size: 2.2em; margin-bottom: 10px; }
+        .subtitle { color: #ffd700; font-size: 1.3em; margin-bottom: 5px; }
+        .towers { display: flex; flex-direction: row; overflow-x: auto; gap: 5px; justify-content: center; align-items: stretch; }
+        .tower { background-color: #ffd700; color: black; min-width: 160px; height: 220px; padding: 10px; border-radius: 5px; text-align: left; position: relative; border: 2px solid #d4af37; display: flex; flex-direction: column; justify-content: space-between; }
+        .tower h3 { margin: 0 0 5px 0; text-align: center; font-size: 1.1em; }
+        .tower p { font-size: 0.8em; margin: 0 0 3px 0; line-height: 1.2; }
+        .button { background-color: blue; color: white; border: none; padding: 5px; width: 100%; cursor: pointer; font-weight: bold; font-size: 0.9em; border-radius: 0 0 5px 5px; }
+        .tip-jar { background: #d4af37; color: #222; padding: 3px; margin: 3px 0; border-radius: 3px; font-size: 0.75em; }
+        .tip-jar img { width: 45px; height: 45px; display: block; margin: 0 auto; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 15px; border: 1px solid #888; width: 80%; color: black; font-size: 0.9em; }
+        .close { color: #aaa; float: right; font-size: 22px; font-weight: bold; cursor: pointer; }
+        .feed { max-width: 800px; margin: 20px auto; }
+        .post { background: #181824; border-radius: 10px; margin: 10px 0; padding: 10px; font-size: 0.9em; }
+        .rules { color: #ffd700; font-size: 0.9em; margin-top: 10px; }
+        .domain { font-size: 1em; color: #ffd700; margin-top: 5px; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .tip-jar-sea { animation: pulse 2s infinite; text-align: center; }
+        .nav-links { margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-link { color: #ffd700; text-decoration: none; padding: 8px 16px; border: 2px solid #ffd700; border-radius: 5px; font-weight: bold; transition: all 0.3s ease; }
+        .nav-link:hover { background-color: #ffd700; color: black; transform: scale(1.05); }
+        .hero-tagline { 
+            color: #ffd700; 
+            font-size: 1.1em; 
+            margin: 15px 0; 
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); }
+            to { text-shadow: 0 1px 10px rgba(255, 215, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8); }
+        }
+    </style>
 </head>
 <body>
-  <h1>🔥 GLOBAL FLAME – SANCTUARY OF LOVE</h1>
-  <p>Truth-Serum Platform – Pure Love, Pure Truth, Pure Healing</p>
-  <div class="grid">      <div class="tower">
-        <h2>Community Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Elders: Wisdom & Guidance - Grandmother Nia shares oral history ( tip)<br>Women: Support & Empowerment - Mama Kemi teaches basket weaving (Free + tip jar)<br>Men: Brotherhood & Growth - Brother Malik's job training ( access)<br>Children: Future & Fun - Little Kwame's math rap (Tips fund books)<br>Family: Cook-offs (Tips for pots)<br>Bloodline: Rituals (Tips for ceremonies)<br>Villagers: Discussions (Tips for projects)<br>Youth: Leadership (Tips for materials)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Prison Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Life Inmates: Stories & Support - Carlos' inspirational stories ( ebook)<br>Families: Connection & Hope - Maria's messages of hope (Tips fund support)<br>Reentry: Jobs & Transition - Ex-inmate's welding skills ( course)<br>Innocent: Justice & Advocacy - Advocacy campaigns (Tip funds justice)<br>Support: Motivational letters (Tips for books)<br>Hope: Family reunions (Tips for travel)<br>Transition: Skills workshops (Tips for tools)<br>Justice: Legal aid stories (Tips for lawyers)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Education Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Teachers: Classes & Workshops - Mr. Diallo's physics lessons ()<br>Mentors: Guidance & Support - Engineer Adjoa's career coaching (/30min)<br>Materials: Resources & Tools - Printable textbooks ( donation)<br>All Ed: Comprehensive Learning - Street kids' recycling hacks (Tips fund bins)<br>Classes: Math tutorials (Tips for supplies)<br>Guidance: Career talks (Tips for books)<br>Resources: Digital libraries (Tips for access)<br>Learning: Community seminars (Tips for speakers)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Creative Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Art: Visual & Digital Arts - Graffiti crew's inspiring murals ( prints)<br>Comedy: Standup & Sketches - Auntie Zainab's funny stories (Tip jar)<br>Music: Singers & Instrumentalists - Fela-inspired band's songs ( sample,  album)<br>Dance: Movement & Expression - Breakdance tutorials (Tips buy mats)<br>Visual: Painting classes (Tips for supplies)<br>Music: Vocal training (Tips for microphones)<br>Dance: Yoga flows (Tips for mats)<br>Body: Fitness sessions (Tips for equipment)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Innovation Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Invention: Ideas & Prototypes - 12yo's plastic-to-fuel converter ( blueprint)<br>Writers: Books & Scripts - Poetry collections ( ebook)<br>Pods: Live Podcasts - Healing stories podcast ( episode)<br>Kids: Safe & Fun Space - Solar toy hack tutorials (Tips buy parts)<br>Ideas: Brainstorm sessions (Tips for materials)<br>Solutions: Problem-solving workshops (Tips for tools)<br>Collab: Group projects (Tips for supplies)<br>Write: Story writing classes (Tips for books)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Sports Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Ballers: Highlights (Tips buy balls)<br>Coaches: Training ( course)<br>Refs: Clips (Protection tips)<br>Teamwork: Group games (Tips for gear)<br>Drills: Fitness training (Tips for equipment)<br>Highlights: Basketball dunks (Tips for courts)<br>Coaches: Skill sessions (Tips for books)<br>Refs: Fair play workshops (Tips for whistles)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Barter Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Trade goods/skills: Barter tip flow - Phone repairs for rice ( value)<br>Build: Roof thatching for coop ( value)<br>Services: Haircut for textbooks ( value)<br>Food: Garden veggies for clothes ( value)<br>Tools: Knife sharpening for tools ( value)<br>Skills: Language lessons for food ( value)<br>Goods: Handmade crafts for tools ( value)<br>Exchange: Bike repairs for books ( value)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="tower">
-        <h2>Podcast Tower</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Hosts: Live Podcasts - Inspirational stories ( episode)<br>Guests: Healing discussions (Tips fund guests)<br>Panels: Motivational series ( access)<br>Series: Community voices (Free + tip jar)<br>Hosts: Live interviews (Tips for equipment)<br>Guests: Story sharing (Tips for travel)<br>Panels: Group talks (Tips for mics)<br>Series: Ongoing episodes (Tips for editing)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>      <div class="kids-tower">
-        <h2>Children Tower (4–17)</h2>
-        <details>
-          <summary>Press for Examples</summary>
-          <div class="examples">Play: Games & Fun - Math rap battles (Tips fund books)<br>Learn: Lessons & Workshops - Art workshops ( session)<br>Voice: Discussions & Stories - Storytelling (Free + tip jar)<br>Grow: Mentoring & Growth - Sports drills ( access)<br>Play: Creative games (Tips for toys)<br>Learn: Science experiments (Tips for supplies)<br>Voice: Kid podcasts (Tips for mics)<br>Grow: Leadership sessions (Tips for books)</div>
-        </details>
-        <div class="btn tip-btn"></div>
-        <div class="btn upload-btn">UPLOAD / GO LIVE</div>
-      </div>  </div>
-  <p>Pure Love Only, min , 10-min payout, max . Family/Recruits/Creators all eat.</p>
-  <p>Global Flame is operated by LB11 LLC. Founded by Lemuel Blue. Based in Florida, USA.</p>
-  <p>Email: founder@globalflame.org</p>
-  <p>Our platform allows users to send SMS-based Love Bomb tips to creators and elders.</p>
+    <h1>GLOBAL FLAME - SANCTUARY OF LOVE</h1>
+    <div class="hero-tagline">🔥 Join the Flame • Watch the Flames • Be the Flame 🔥</div>
+    <div class="subtitle">First Truth-Serum Platform - Pure Love, Pure Truth, Pure Healing</div>
+    <div class="nav-links">
+        <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
+        <a href="terms.html" class="nav-link">Terms and Conditions</a>
+        <a href="sanctuary-charter.html" class="nav-link">Sanctuary Charter</a>
+        <a href="sms-opt-in.html" class="nav-link">Opt in</a>
+    </div>
+    <div class="towers">
+        <div class="tower">
+            <h3>Community Tower</h3>
+            <p>Elders Wisdom & Guidance<br>Men Brotherhood & Growth<br>Women Support & Empowerment<br>Children Future & Play</p>
+            <button class="button" onclick="openBooth('community')">TIP COMMUNITY UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamecomm&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Prison Tower</h3>
+            <p>Life People Serving Life Sentences<br>Family Loved Support<br>Innocent Justice & Hope</p>
+            <button class="button" onclick="openBooth('prison')">TIP PRISON UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflameprison&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Education Tower</h3>
+            <p>Learning Classes & Workshops<br>Coaching Scholar<br>Teachers Retired Teacher</p>
+            <button class="button" onclick="openBooth('education')">TIP EDUCATION UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflameedu&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Creative Tower</h3>
+            <p>Art Painting & Digital Music<br>Comedy Skits Producers<br>Body Modeling eco vocal</p>
+            <button class="button" onclick="openBooth('creative')">TIP CREATIVES UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamecreative&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Innovation Tower</h3>
+            <p>Ideas Inventions & prototypes<br>Demos Demo & creation<br>Scope Script concept deca</p>
+            <button class="button" onclick="openBooth('innovation')">TIP INNOVATION UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflameinnov&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Sports Tower</h3>
+            <p>Team Sports Coaching & drills<br>Highlights Game footage<br>Coaches Strategy & tips<br>Worldwide talent search</p>
+            <button class="button" onclick="openBooth('sports')">TIP SPORTS UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamesports&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Barter Tower</h3>
+            <p>Exchange Goods & Services<br>Community Mutual support</p>
+            <button class="button" onclick="openBooth('barter')">TIP BARTER UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamebarter&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Podcast Tower</h3>
+            <p>Hosts Storytellers & Interviews<br>Panels Inspiration sessions<br>Guests Personal & stories</p>
+            <button class="button" onclick="openBooth('podcast')">TIP PODCAST UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamepodcast&size=45x45' alt='QR'></div>
+        </div>
+        <div class="tower">
+            <h3>Children Tower (4-17)</h3>
+            <p>Play Games & creative fun<br>Learn Youth contests & classes<br>Voice Skills & discovery<br>Grow</p>
+            <button class="button" onclick="openBooth('children')">TIP CHILDREN UPLOAD & LIVE</button>
+            <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamechildren&size=45x45' alt='QR'></div>
+        </div>
+    </div>
+    <div class="rules">
+        PURE LOVE RULES: Min  tip - 10 min payouts - No leaks<br>
+        This is Global Flame - Sanctuary of Love - Secured with Love
+    </div>
+    <div class="feed" id="feed">
+        <!-- Dynamic uploads -->
+    </div>
+    <footer>
+        Global Flame is operated by LBT11 LLC. Founded by Lemuel Blue. Based in Florida, USA.<br>
+        Email: founder@globalflame.org<br>
+        Our platform allows users to send SMS-based Love Bombs to creators and elders.<br>
+        Upload samples, sell books, writings, or teach classes. Every tower offers uplift opportunities – retired teachers can teach, creators get paid under 10 minutes.<br>
+        <div class="domain">globalflame.org</div>
+    </footer>
+    <div class="qr-code">
+        <img style="width: 80px; height: 80px; margin-top: 4px;" src="images/globalflame-qr.png" alt="QR Code for Global Flame">
+        <p>Scan QR to visit Global Flame</p>
+    </div>
+    <!-- Booth Modal -->
+    <div id="boothModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBooth()">&times;</span>
+            <h3 id="boothTitle">Booth for Tower</h3>
+            <p>Hustler Paradise: Set up shop, go live, upload/sell ( max), tip jar ( min) - paid <10 min!</p>
+            <form id="uploadForm">
+                <input type="text" placeholder="Title" id="titleInput" required>
+                <input type="number" placeholder="Price ( max)" id="priceInput" max="20" required>
+                <input type="file" id="fileInput" accept="video/*" required>
+                <button type="button" onclick="submitUpload()">Upload & Sell</button>
+            </form>
+            <button onclick="goLive()">Go Live (10-sec delay)</button>
+            <div class="tip-jar">Your Tip Jar 💸 <input type="number" min="1" placeholder="Tip ( min)"> <button onclick="submitTip()">Tip Now</button></div>
+            <img src="" id="boothQR" alt="Booth QR" style="width:100px; height:100px; display:block; margin:0 auto;">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
+    <script>
+        const supabase = Supabase.createClient('https://iqdvfihpgmrwugthmhco.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxZHZmaWhwZ21yd3VndGhtaGNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE4MjY1MTAsImV4cCI6MjA2NzQwMjUxMH0.eRdZKRL9AZEC9jDTZ2aldakdYdLRTwo-qIVa29TI_ac');
+        const zkRpc = 'https://zkevm-rpc.com';
+        let provider, signer, currentTower = '';
+        async function loadFeed() {
+            const { data: items } = await supabase.from('market_items').select('*').order('created_at', { ascending: false });
+            const feed = document.getElementById('feed');
+            feed.innerHTML = '';
+            items.forEach(item => {
+                feed.innerHTML += `<div class="post"><div class="post-title">${item.title} (Tower: ${item.tower_code})</div><div class="post-content">$${item.price} | <a href="${item.file_url}">Download</a></div><div class="tip-jar-sea">💸 Tip Jar <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflame&size=60x60" alt="QR"></div></div>`;
+            });
+        }
+        loadFeed();
+        function openBooth(tower) {
+            currentTower = tower;
+            document.getElementById('boothTitle').innerText = `Booth for ${tower} Tower`;
+            document.getElementById('boothQR').src = 'https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflame&size=100x100';
+            document.getElementById('boothModal').style.display = 'block';
+        }
+        function closeBooth() { document.getElementById('boothModal').style.display = 'none'; }
+        async function submitUpload() {
+            const title = document.getElementById('titleInput').value;
+            const price = parseFloat(document.getElementById('priceInput').value);
+            const file = document.getElementById('fileInput').files[0];
+            if (price > 20) return alert('Max !');
+            if (!file) return alert('Select a video!');
+            const { data, error } = await supabase.storage.from('uploads').upload(file.name, file);
+            if (error) return alert(error.message);
+            const fileUrl = supabase.storage.from('uploads').getPublicUrl(file.name).data.publicUrl;
+            await supabase.from('market_items').insert({ tower_code: currentTower.toUpperCase().substring(0,4), title, price, file_url: fileUrl, user_id: 'demo' });
+            alert('Video uploaded! Paid <10 min.');
+            loadFeed();
+            closeBooth();
+        }
+        function goLive() {
+            alert('10-sec delay... Live! (Demo)');
+            setTimeout(() => {}, 10000); // Placeholder, integrate Twilio Video for real
+        }
+        function submitTip() {
+            const amount = parseFloat(prompt('Tip (min $1):'));
+            if (amount < 1) return alert('Min $1!');
+            alert(`Tip $${amount} sent! Paid <10 min.`);
+        }
+    </script>
 </body>
 </html>
