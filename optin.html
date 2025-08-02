@@ -3,12 +3,12 @@
 <head>
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Global Flame – Opt-In</title>
+  <title>Global Flame – SMS Consent</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #222;
+      background-color: #181818;
+      color: #ffffff;
       margin: 0;
       padding: 0;
       text-align: center;
@@ -16,20 +16,21 @@
     .container {
       max-width: 520px;
       margin: 60px auto;
-      background-color: #fafaff;
+      background-color: #2e2e2e;
       padding: 40px 20px;
       border-radius: 12px;
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
     }
     h1 {
-      color: #e25e00;
+      color: #ffd700;
       font-size: 2em;
       margin-bottom: 15px;
     }
     .info {
       margin-top: 20px;
       font-size: 1.05em;
-      color: #555;
+      color: #e0e0e0;
+      line-height: 1.6;
     }
     input[type='email'],
     button {
@@ -42,45 +43,133 @@
       box-sizing: border-box;
     }
     button {
-      background-color: #e25e00;
-      color: #ffffff;
+      background-color: #ffd700;
+      color: #000000;
       border: none;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-weight: bold;
     }
     button:hover {
-      background-color: #d04b00;
+      background-color: #ffed4e;
+    }
+    button:disabled {
+      background-color: #666;
+      cursor: not-allowed;
     }
     label {
       display: block;
       margin-top: 15px;
       font-size: 0.95em;
-      color: #333;
+      color: #e4e4e4;
+      text-align: left;
     }
-    a {
-      color: #1977cc;
-      text-decoration: underline;
+    .consent-text {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #ffd700;
+    }
+    .demo-notice {
+      background-color: #ff6b35;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+    .loading {
+      display: none;
+      color: #ffd700;
+      margin-top: 10px;
+    }
+    .success-message {
+      display: none;
+      background-color: #28a745;
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class='container'>
-    <h1>Subscribe to Global Flame</h1>
+    <h1>🔥 SMS Consent & Opt-In</h1>
     <div class='info'>
-      🔥 Stay updated with the latest news and exclusive offers.<br>
-      Enter your email below to join our community.
+      Welcome to Global Flame! Join our community to receive updates, Love Bombs, and exclusive content via Email.
     </div>
-    <form>
-      <input type='email' placeholder='Enter your email address' required>
+    
+    <div class='consent-text'>
+      By proceeding, I give Global Flame permission to contact me via Email regarding my activity.
+    </div>
+    
+    <form id='smsForm'>
+      <input type='email' id='emailInput' placeholder='Enter your Email' required>
       <label>
-        <input type='checkbox' required>
-        I agree to receive email communications from Global Flame.
+        <input type='checkbox' id='consentCheckbox' required>
+        I consent to receive Email updates from Global Flame. Message & data rates may apply. Text STOP to opt out anytime.
       </label>
-      <button type='submit'>Subscribe Now</button>
+      <button type='submit' id='consentBtn'>I Consent</button>
     </form>
+    
+    <div class='loading' id='loading'>
+      🔄 Processing your consent...
+    </div>
+    
+    <div class='success-message' id='successMessage'>
+      ✅ Consent recorded! Check your Email for verification.
+    </div>
+    
+    <div class='demo-notice'>
+      <strong>Demo Mode:</strong> This simulates the Email opt-in flow. No actual Email will be sent.
+    </div>
+    
     <div class='info' style='margin-top: 25px;'>
-      Need assistance? Reach out at <a href='mailto:founder@globalflame.org'>founder@globalflame.org</a>
+      Need assistance? Reach out at <a href='mailto:founder@globalflame.org' style='color: #ffd700;'>founder@globalflame.org</a>
     </div>
   </div>
+
+  <script>
+    document.getElementById('smsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('emailInput').value;
+      const consent = document.getElementById('consentCheckbox').checked;
+      
+      if (!phone || !consent) {
+        alert('Please enter your phone number and check the consent box.');
+        return;
+      }
+      
+      // Simulate processing
+      const loading = document.getElementById('loading');
+      const success = document.getElementById('successMessage');
+      const form = document.getElementById('smsForm');
+      const button = document.getElementById('consentBtn');
+      
+      // Show loading
+      loading.style.display = 'block';
+      form.style.display = 'none';
+      button.disabled = true;
+      
+      // Simulate API call delay
+      setTimeout(() => {
+        loading.style.display = 'none';
+        success.style.display = 'block';
+        
+        // Simulate SMS sending
+        console.log('Demo: Email sent to', email);
+        console.log('Demo: Consent recorded at', new Date().toISOString());
+        
+        // Redirect to welcome page after 3 seconds
+        setTimeout(() => {
+          window.location.href = 'welcome.html';
+        }, 3000);
+        
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
