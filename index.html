@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -107,29 +107,12 @@
             <div class="tip-jar">Tip Jar Sea 💸 <img src='https://api.qrserver.com/v1/create-qr-code/?data=https://paypal.me/globalflamechildren&size=45x45' alt='QR'></div>
         </div>
     </div>
-    <div class='tower'>
-      <h2>Prison Tower</h2>
-      <ul>
-        <li>Life – People serving life sentences</li>
-        <li>Family – Loved-ones support</li>
-        <li>Reentry – Training & reintegration</li>
-        <li>Innocent – Justice-funding tips</li>
-      </ul>
-      <div class='qr'>QR CODE</div>
-      <button class='btn tip'>Tip Prison</button>
-      <button class='btn upload'>Upload & Live</button>
+    <div class="rules">
+        PURE LOVE RULES: Min  tip - 10 min payouts - No leaks<br>
+        This is Global Flame - Sanctuary of Love - Secured with Love
     </div>
-    <div class='tower'>
-      <h2>Education Tower</h2>
-      <ul>
-        <li>Learning – Classes & Workshops</li>
-        <li>Mentorship – Coaching sessions</li>
-        <li>Opportunity – Scholarships & gigs</li>
-        <li>Teachers – Retired teacher opportunities</li>
-      </ul>
-      <div class='qr'>QR CODE</div>
-      <button class='btn tip'>Tip Education</button>
-      <button class='btn upload'>Upload & Live</button>
+    <div class="feed" id="feed">
+        <!-- Dynamic uploads -->
     </div>
     <footer>
         Global Flame is operated by LBT11 LLC. Founded by Lemuel Blue. Based in Florida, USA.<br>
@@ -142,17 +125,22 @@
         <img style="width: 80px; height: 80px; margin-top: 4px;" src="images/globalflame-qr.png" alt="QR Code for Global Flame">
         <p>Scan QR to visit Global Flame</p>
     </div>
-    <div class='tower'>
-      <h2>Innovation Tower</h2>
-      <ul>
-        <li>Ideas – Inventions & prototypes</li>
-        <li>Solutions – Hacks & fixes</li>
-        <li>Collab – Team builds & demos</li>
-        <li>Writing – Scripts & concept docs</li>
-      </ul>
-      <div class='qr'>QR CODE</div>
-      <button class='btn tip'>Tip Innovation</button>
-      <button class='btn upload'>Upload & Live</button>
+    <!-- Booth Modal -->
+    <div id="boothModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBooth()">&times;</span>
+            <h3 id="boothTitle">Booth for Tower</h3>
+            <p>Hustler Paradise: Set up shop, go live, upload/sell ( max), tip jar ( min) - paid <10 min!</p>
+            <form id="uploadForm">
+                <input type="text" placeholder="Title" id="titleInput" required>
+                <input type="number" placeholder="Price ( max)" id="priceInput" max="20" required>
+                <input type="file" id="fileInput" accept="video/*" required>
+                <button type="button" onclick="submitUpload()">Upload & Sell</button>
+            </form>
+            <button onclick="goLive()">Go Live (10-sec delay)</button>
+            <div class="tip-jar">Your Tip Jar 💸 <input type="number" min="1" placeholder="Tip ( min)"> <button onclick="submitTip()">Tip Now</button></div>
+            <img src="" id="boothQR" alt="Booth QR" style="width:100px; height:100px; display:block; margin:0 auto;">
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
@@ -202,4 +190,3 @@
     </script>
 </body>
 </html>
-
