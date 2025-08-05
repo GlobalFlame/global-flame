@@ -10,7 +10,7 @@
       "source": "/sanctuary-charter"
     },
     {
-      "destination": "/sms-opt-in.html",
+      "destination": "/optin.html",
       "source": "/optin"
     },
     {
