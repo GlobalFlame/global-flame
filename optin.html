@@ -1,175 +1,164 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Global Flame – SMS Consent</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #181818;
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    .container {
-      max-width: 520px;
-      margin: 60px auto;
-      background-color: #2e2e2e;
-      padding: 40px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: #ffd700;
-      font-size: 2em;
-      margin-bottom: 15px;
-    }
-    .info {
-      margin-top: 20px;
-      font-size: 1.05em;
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
-    input[type='email'],
-    button {
-      font-size: 1.1em;
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #ffd700;
-      color: #000000;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      font-weight: bold;
-    }
-    button:hover {
-      background-color: #ffed4e;
-    }
-    button:disabled {
-      background-color: #666;
-      cursor: not-allowed;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-size: 0.95em;
-      color: #e4e4e4;
-      text-align: left;
-    }
-    .consent-text {
-      background-color: #333;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 20px 0;
-      border-left: 4px solid #ffd700;
-    }
-    .demo-notice {
-      background-color: #ff6b35;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 20px;
-      font-size: 0.9em;
-    }
-    .loading {
-      display: none;
-      color: #ffd700;
-      margin-top: 10px;
-    }
-    .success-message {
-      display: none;
-      background-color: #28a745;
-      color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Global Flame – Opt-In</title>
+<style>
+body {
+margin:0;
+padding:20px;
+font-family:Arial,sans-serif;
+background:#000;
+color:#ffd700;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+h1 { margin-bottom:10px; }
+form {
+background:#111;
+padding:20px;
+border:2px solid #ffd700;
+border-radius:8px;
+width:100%;
+max-width:400px;
+}
+label { display:block; margin:10px 0 5px; font-size:0.9rem; }
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+width:100%;
+padding:8px;
+border:1px solid #444;
+border-radius:4px;
+background:#222;
+color:#fff;
+font-size:1rem;
+}
+.checkbox {
+display:flex;
+align-items:center;
+margin:12px 0;
+font-size:0.9rem;
+}
+.checkbox input { margin-right:8px; }
+.buttons {
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+button {
+padding:12px 24px;
+background:#ffd700;
+border:none;
+border-radius:4px;
+font-size:1.1rem;
+font-weight:bold;
+color:#000;
+cursor:pointer;
+transition: background 0.2s;
+}
+button:disabled { opacity:0.5; cursor:not-allowed; }
+button.skip {
+background: #444;
+color: #ccc;
+border: none;
+}
+.links {
+margin-top:15px;
+font-size:0.8rem;
+color:#ccc;
+}
+.links a { color:#4dabf7; text-decoration:none; }
+</style>
 </head>
 <body>
-  <div class='container'>
-    <h1>🔥 SMS Consent & Opt-In</h1>
-    <div class='info'>
-      Welcome to Global Flame! Join our community to receive updates, Love Bombs, and exclusive content via Email.
-    </div>
-    
-    <div class='consent-text'>
-      By proceeding, I give Global Flame permission to contact me via Email regarding my activity.
-    </div>
-    
-    <form id='smsForm'>
-      <input type='email' id='emailInput' placeholder='Enter your Email' required>
-      <label>
-        <input type='checkbox' id='consentCheckbox' required>
-        I consent to receive Email updates from Global Flame. Message & data rates may apply. Text STOP to opt out anytime.
-      </label>
-      <button type='submit' id='consentBtn'>I Consent</button>
-    </form>
-    
-    <div class='loading' id='loading'>
-      🔄 Processing your consent...
-    </div>
-    
-    <div class='success-message' id='successMessage'>
-      ✅ Consent recorded! Check your Email for verification.
-    </div>
-    
-    <div class='demo-notice'>
-      <strong>Demo Mode:</strong> This simulates the Email opt-in flow. No actual Email will be sent.
-    </div>
-    
-    <div class='info' style='margin-top: 25px;'>
-      Need assistance? Reach out at <a href='mailto:founder@globalflame.org' style='color: #ffd700;'>founder@globalflame.org</a>
-    </div>
-  </div>
+<h1>🔥 GLOBAL FLAME – SANCTUARY OF LOVE</h1>
+<p>Enter your details below to receive SMS Truth-Serum updates.</p>
+<div style="margin: 20px 0;">
+  <a href="index.html" style="color: #ffd700; text-decoration: none; padding: 8px 16px; border: 2px solid #ffd700; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">🏠 Home</a>
+</div>
+<form id="optinForm">
+<label for="fullName">Full Name</label>
+<input type="text" id="fullName" name="fullName" placeholder="Your name" required />
 
-  <script>
-    document.getElementById('smsForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('emailInput').value;
-      const consent = document.getElementById('consentCheckbox').checked;
-      
-      if (!phone || !consent) {
-        alert('Please enter your phone number and check the consent box.');
-        return;
-      }
-      
-      // Simulate processing
-      const loading = document.getElementById('loading');
-      const success = document.getElementById('successMessage');
-      const form = document.getElementById('smsForm');
-      const button = document.getElementById('consentBtn');
-      
-      // Show loading
-      loading.style.display = 'block';
-      form.style.display = 'none';
-      button.disabled = true;
-      
-      // Simulate API call delay
-      setTimeout(() => {
-        loading.style.display = 'none';
-        success.style.display = 'block';
-        
-        // Simulate SMS sending
-        console.log('Demo: Email sent to', email);
-        console.log('Demo: Consent recorded at', new Date().toISOString());
-        
-        // Redirect to welcome page after 3 seconds
-        setTimeout(() => {
-          window.location.href = 'welcome.html';
-        }, 3000);
-        
-      }, 2000);
+<label for="phone">Mobile Number</label>
+<input type="tel" id="phone" name="phone"
+placeholder="+1234567891" pattern="^\+\d{10,15}$"
+title="Include country code, e.g. +1234567891" required />
+
+<label for="email">Email (optional)</label>
+<input type="email" id="email" name="email" placeholder="you@example.com" />
+
+<div class="checkbox">
+<input type="checkbox" id="offers" required />
+<label for="offers">I would like to receive offers and news</label>
+</div>
+<div class="checkbox">
+<input type="checkbox" id="consent" required />
+<label for="consent">I accept the <a href="privacy-policy.html" target="_blank" style="color:#4dabf7;">Privacy Policy</a> &amp; <a href="terms.html" target="_blank" style="color:#4dabf7;">Terms of Service</a></label>
+</div>
+<p style="font-size: 0.8rem; color: #ccc; margin-top: 0; margin-bottom: 10px;">
+By providing your phone number you agree to receive informational text messages from Global Flame.<br>
+Consent is not a condition of purchase. Messages may vary. Msg &amp; data rates may apply.<br>
+Reply HELP for help or STOP to cancel.
+</p>
+<div class="buttons">
+  <button type="button" class="skip" onclick="window.location.href='index.html'">Skip</button>
+  <button type="submit" id="submitBtn" disabled>Continue</button>
+</div>
+<div class="links">
+<a href="privacy-policy.html" target="_blank">Privacy Policy</a> •
+<a href="terms.html" target="_blank">Terms & Conditions</a>
+</div>
+</form>
+
+<script>
+const form = document.getElementById('optinForm');
+const btn = document.getElementById('submitBtn');
+const consent = document.getElementById('consent');
+const offers = document.getElementById('offers');
+const inputs = form.querySelectorAll('input[required]');
+
+// Enable button when form valid and both checkboxes checked
+form.addEventListener('input', () => {
+  btn.disabled = !(
+    form.checkValidity() && consent.checked && offers.checked
+  );
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+
+  // Simulate API call delay
+  setTimeout(() => {
+    // Log the demo submission
+    console.log('Demo SMS Opt-in:', {
+      name: form.fullName.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      offers: offers.checked,
+      consent: consent.checked,
+      timestamp: new Date().toISOString()
     });
-  </script>
+    
+    // Show success message
+    alert('✅ Opt-in successful! Check your phone for verification SMS.\n\n(Demo: This simulates a real SMS opt-in submission)');
+    
+    // Reset form
+    form.reset();
+    btn.disabled = true;
+    btn.textContent = 'Continue';
+    
+    // Redirect to welcome page after 3 seconds
+    setTimeout(() => {
+      window.location.href = 'welcome.html';
+    }, 2000);
+  }, 1000);
+});
+</script>
 </body>
-</html>
+</html> 
