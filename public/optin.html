@@ -43,9 +43,13 @@ margin:12px 0;
 font-size:0.9rem;
 }
 .checkbox input { margin-right:8px; }
+.buttons {
+display:flex;
+gap:10px;
+margin-top:10px;
+}
 button {
-width:100%;
-padding:12px;
+padding:12px 24px;
 background:#ffd700;
 border:none;
 border-radius:4px;
@@ -53,8 +57,14 @@ font-size:1.1rem;
 font-weight:bold;
 color:#000;
 cursor:pointer;
+transition: background 0.2s;
 }
 button:disabled { opacity:0.5; cursor:not-allowed; }
+button.skip {
+background: #444;
+color: #ccc;
+border: none;
+}
 .links {
 margin-top:15px;
 font-size:0.8rem;
@@ -75,19 +85,29 @@ color:#ccc;
 
 <label for="phone">Mobile Number</label>
 <input type="tel" id="phone" name="phone"
-placeholder="+1 555 123 4567" pattern="^\+\d{1,3}\s?\d{3,14}$"
-title="Include country code, e.g. +1 5551234567" required />
+placeholder="+1234567891" pattern="^\+\d{10,15}$"
+title="Include country code, e.g. +1234567891" required />
 
 <label for="email">Email (optional)</label>
 <input type="email" id="email" name="email" placeholder="you@example.com" />
 
 <div class="checkbox">
-<input type="checkbox" id="consent" required />
-<label for="consent">Yes, I consent to receive SMS messages from Global Flame.</label>
+<input type="checkbox" id="offers" required />
+<label for="offers">I would like to receive offers and news</label>
 </div>
-
-<button type="submit" id="submitBtn" disabled>Submit & Opt-In</button>
-
+<div class="checkbox">
+<input type="checkbox" id="consent" required />
+<label for="consent">I accept the <a href="privacy-policy.html" target="_blank" style="color:#4dabf7;">Privacy Policy</a> &amp; <a href="terms.html" target="_blank" style="color:#4dabf7;">Terms of Service</a></label>
+</div>
+<p style="font-size: 0.8rem; color: #ccc; margin-top: 0; margin-bottom: 10px;">
+By providing your phone number you agree to receive informational text messages from Global Flame.<br>
+Consent is not a condition of purchase. Messages may vary. Msg &amp; data rates may apply.<br>
+Reply HELP for help or STOP to cancel.
+</p>
+<div class="buttons">
+  <button type="button" class="skip" onclick="window.location.href='index.html'">Skip</button>
+  <button type="submit" id="submitBtn" disabled>Continue</button>
+</div>
 <div class="links">
 <a href="privacy-policy.html" target="_blank">Privacy Policy</a> •
 <a href="terms.html" target="_blank">Terms & Conditions</a>
@@ -98,43 +118,46 @@ title="Include country code, e.g. +1 5551234567" required />
 const form = document.getElementById('optinForm');
 const btn = document.getElementById('submitBtn');
 const consent = document.getElementById('consent');
+const offers = document.getElementById('offers');
 const inputs = form.querySelectorAll('input[required]');
 
-// Enable button when form valid and consent checked
+// Enable button when form valid and both checkboxes checked
 form.addEventListener('input', () => {
-btn.disabled = !(
-form.checkValidity() && consent.checked
-);
+  btn.disabled = !(
+    form.checkValidity() && consent.checked && offers.checked
+  );
 });
 
 form.addEventListener('submit', e => {
-e.preventDefault();
-btn.disabled = true;
-btn.textContent = 'Processing...';
-
-// Simulate API call delay
-setTimeout(() => {
-  // Log the demo submission
-  console.log('Demo SMS Opt-in:', {
-    name: form.fullName.value,
-    phone: form.phone.value,
-    email: form.email.value,
-    timestamp: new Date().toISOString()
-  });
-  
-  // Show success message
-  alert('✅ Opt-in successful! Check your phone for verification SMS.\n\n(Demo: This simulates a real SMS opt-in submission)');
-  
-  // Reset form
-  form.reset();
+  e.preventDefault();
   btn.disabled = true;
-  btn.textContent = 'Submit & Opt-In';
-  
-  // Redirect to welcome page after 3 seconds
+  btn.textContent = 'Processing...';
+
+  // Simulate API call delay
   setTimeout(() => {
-    window.location.href = 'welcome.html';
-  }, 3000);
-}, 2000);
+    // Log the demo submission
+    console.log('Demo SMS Opt-in:', {
+      name: form.fullName.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      offers: offers.checked,
+      consent: consent.checked,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Show success message
+    alert('✅ Opt-in successful! Check your phone for verification SMS.\n\n(Demo: This simulates a real SMS opt-in submission)');
+    
+    // Reset form
+    form.reset();
+    btn.disabled = true;
+    btn.textContent = 'Continue';
+    
+    // Redirect to welcome page after 3 seconds
+    setTimeout(() => {
+      window.location.href = 'welcome.html';
+    }, 2000);
+  }, 1000);
 });
 </script>
 </body>
